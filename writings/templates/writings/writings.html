@@ -5,15 +5,13 @@
 {% endblock %}
 
 {% block content%}
-<div class="article-text">
+<div class="article">
     <h1>Произведения</h1>
 
     {% for writing in writings %}
         <h4><a href="{% url 'writing' writing.idwr %}">{{ writing.name }}</a></h4>
         <p>{{ writing.get_short_text }}</p>
-        <a href="{% url 'writing' writing.idwr %}">
-            <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-        </a>
+        <a href="{% url 'writing' writing.idwr %}"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></a>
     {% endfor %}
 </div>
 <div class="panel panel-default">

@@ -29,4 +29,4 @@ urlpatterns = [
     url(r'^gallery/',include('gallery.urls')),
     url(r'^contacts/',include('contact.urls')),
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

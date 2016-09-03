@@ -42,16 +42,6 @@ h4 {
 }
 
 .article {
-    width: 80%;
-    display: inline;
-    float: left;
-    margin-right: 40px;
-    margin-left: 20px;
-
-
-}
-
-.article-text {
     width: 70%;
     display: inline;
     float: left;
