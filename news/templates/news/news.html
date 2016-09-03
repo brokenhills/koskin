@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Новости
+{% endblock %}
+
+{% block content%}
+
+<div class="article-text">
+
+    <h1>Новости</h1>
+
+    {% for new in news %}
+
+        <h4>{{ new.name}}</h4>
+        <p>{{ new.content }}</p>
+        <p>{{ new.datead }}</p>
+
+    {% endfor %}
+</div>
+
+{% endblock %}
