@@ -1,0 +1,59 @@
+.main-content {
+    margin-top: 80px;
+    float: left;
+    display: inline;
+
+}
+
+h4 {
+    margin-top: 50px;
+}
+
+.caption {
+    display: inline-block;
+    margin: auto;
+}
+
+.image {
+    width: 75px;
+    height: 75px;
+    top: 0px;
+    left: 0px;
+}
+
+.navimg {
+    align: center;
+}
+
+.thumbnail {
+    display: table;
+    height: 100px
+}
+
+.feature {
+    display: table;
+    height: 100px
+}
+
+.panel {
+    margin-top: 40px;
+    float: left;
+    width: 20%;
+}
+
+.article {
+    width: 70%;
+    display: inline;
+    float: left;
+    margin-right: 40px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.article-name {
+    padding-left: 15px;
+}
+
+.article-photo {
+    margin-left: 20px;
+}

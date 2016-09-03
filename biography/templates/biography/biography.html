@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Биография
+{% endblock %}
+
+{% block content%}
+
+<div class="article">
+
+    <h1>Биография</h1>
+
+        {% for bio in biography%}
+
+            <p>{{ bio.content}}</p>
+
+        {% endfor %}
+</div>
+
+{% endblock %}

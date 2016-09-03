@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ image.name }}
+{% endblock %}
+
+{% block content%}
+
+    <!--<h5 align="center">{{ image.name }}</h5>-->
+
+        <nav aria-label="Navigation">
+            <div align="center" class="navimg">
+              <img src="{{MEDIA_URL}}{{ image.img }}">
+              <p>{{ image.comment }}</p>
+            </div>
+        <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+        </nav>
+
+{% endblock %}
+
+
+
+
+
+<!--<nav aria-label="">-->
+  <!--<ul class="pager">-->
+    <!--<li><a href="#">Previous</a></li>-->
+    <!--<li><a href="#">Next</a></li>-->
+  <!--</ul>-->
+<!--</nav>-->
