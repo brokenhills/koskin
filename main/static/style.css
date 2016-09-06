@@ -21,8 +21,13 @@ h4 {
     left: 0px;
 }
 
+.glyphicon-image {
+    align: center;
+}
+
 .navimg {
     align: center;
+    margin-bottom: 20px;
 }
 
 .thumbnail {
