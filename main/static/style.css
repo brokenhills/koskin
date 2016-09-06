@@ -37,8 +37,20 @@ h4 {
 
 .panel {
     margin-top: 40px;
+    top: 50px;
+    right: 100px;
     float: left;
     width: 20%;
+    position: fixed;
+}
+
+.panel-map {
+    margin-top: 40px;
+    top: 50px;
+    right: 100px;
+    float: left;
+    width: 40%;
+
 }
 
 .article {
@@ -56,4 +68,8 @@ h4 {
 
 .article-photo {
     margin-left: 20px;
+}
+
+.map {
+    width: auto;
 }

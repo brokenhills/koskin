@@ -15,6 +15,7 @@ class Writings(models.Model):
     datead = models.DateField(auto_now_add=True, verbose_name=u"Дата загрузки")
     content = models.TextField(verbose_name=u"Текст")
     description = models.TextField(verbose_name=u"Комментарий")
+    is_liked = models.BooleanField(default=0, verbose_name=u"Избранное")
 
     class Meta:
         verbose_name=u"Произведение"
@@ -31,3 +32,10 @@ class Writings(models.Model):
             return self.content[:SHORT_TEXT_LEN]
         else:
             return self.content
+
+    def get_liked(self):
+        if self.is_liked == True:
+            return self.name
+
+
+
