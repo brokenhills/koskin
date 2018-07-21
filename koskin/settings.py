@@ -24,7 +24,7 @@ SECRET_KEY = '8$j(_khko8ko^s9(-6jc7lf(2yu(!h%9j$iji^+*ic$wg)6+-%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'www.koskin.ru']
+ALLOWED_HOSTS = ['localhost', u'brokenhills.pythonanywhere.com']
 
 
 # Application definition
