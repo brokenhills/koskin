@@ -128,7 +128,7 @@ USE_TZ = True
 
 ADMIN_MEDIA_PREFIX = '/main/static/admin/'
 
-STATIC_ROOT = '/Users/brokenhills/IdeaProjects/koskin/main/static/'
+STATIC_ROOT = '/koskin/main/static/'
 
 STATIC_URL = '/main/static/'
 
