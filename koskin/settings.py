@@ -130,7 +130,7 @@ ADMIN_MEDIA_PREFIX = '/main/static/admin/'
 
 STATIC_ROOT = '/home/brokenhills/koskin/main/static/'
 
-STATIC_URL = '/main/static/'
+STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
