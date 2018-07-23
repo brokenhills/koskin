@@ -1,8 +1,9 @@
 .main-content {
     margin-top: 80px;
-    float: left;
-    display: inline;
-
+    display: block;
+    margin: 60px auto 10px auto;
+    width: 100%;
+    max-width: 960px;
 }
 
 h4 {
@@ -59,12 +60,15 @@ h4 {
 }
 
 .article {
-    width: 70%;
-    display: inline;
-    float: left;
+    width: 100%;
+    display: block;
     margin-right: 40px;
     margin-left: 20px;
     margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 30px;
+    margin-top: 20px;
+    text-align: justify;
 }
 
 .article-name {
