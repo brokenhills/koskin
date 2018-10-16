@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from api.v1.routes import api_router
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -28,5 +29,6 @@ urlpatterns = [
     url(r'^biography/',include('biography.urls')),
     url(r'^gallery/',include('gallery.urls')),
     url(r'^contacts/',include('contact.urls')),
+    url(r'^api/v1/', include(api_router.urls))
 
 ] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

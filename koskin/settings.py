@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'writings',
     'news',
     'gallery',
-    'contact'
+    'contact',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
