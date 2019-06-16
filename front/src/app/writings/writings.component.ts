@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from '../data.service';
+import { Writing } from '../models/writing';
 
 @Component({
   selector: 'app-writings',
   templateUrl: './writings.component.html',
-  styleUrls: ['./writings.component.css']
+  styleUrls: ['./writings.component.css'],
+  providers: [DataService]
 })
 export class WritingsComponent implements OnInit {
 
-  constructor() { }
+  writings: Writing[] = [];
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getWritings()
+    .subscribe(writings => {
+      this.writings = writings;
+    });
   }
-
 }

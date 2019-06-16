@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { WritingsComponent } from '../writings/writings.component';
+import { GalleryComponent } from '../gallery/gallery.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
       path:  'writings',
       component:  WritingsComponent,
+  },
+  {
+    path:  'gallery',
+    component:  GalleryComponent,
   },
 ];
 

@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'news',
     'gallery',
     'contact',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -56,9 +57,32 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsPostCsrfMiddleware'
 ]
 
 ROOT_URLCONF = 'koskin.urls'
+
+CORS_ALLOW_HEADERS = (
+    'content-disposition', 
+    'accept-encoding',
+    'content-type', 
+    'accept', 
+    'origin', 
+    'authorization', 
+    'cache-control', 
+    'access-control-allow-origin', 
+    'access-control-allow-headers',
+    'access-control-allow-methods'
+    )
+
+CORS_ORIGIN_WHITELIST = (
+    'https://google.com',
+    'http://127.0.0.1:4200',
+    'http://localhost'
+)
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {

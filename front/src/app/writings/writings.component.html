@@ -1,3 +1,9 @@
-<p>
-  writings works!
-</p>
+<section class="main" *ngIf="writings.length > 0">
+  <ul class="list-group">
+    <li *ngFor="let writing of writings">
+      <app-writing
+        [writing]="writing">
+      </app-writing>
+    </li>
+  </ul>
+</section>
