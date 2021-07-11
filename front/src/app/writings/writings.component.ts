@@ -5,7 +5,7 @@ import { Writing } from '../models/writing';
 @Component({
   selector: 'app-writings',
   templateUrl: './writings.component.html',
-  styleUrls: ['./writings.component.css'],
+  styleUrls: ['./writings.component.scss'],
   providers: [DataService]
 })
 export class WritingsComponent implements OnInit {

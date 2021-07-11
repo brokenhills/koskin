@@ -1,9 +1,9 @@
 <section class="main" *ngIf="writings.length > 0">
-  <ul class="list-group">
-    <li *ngFor="let writing of writings">
+  <div class="list-group">
+    <div class="novel" *ngFor="let writing of writings">
       <app-writing
         [writing]="writing">
       </app-writing>
-    </li>
-  </ul>
+    </div>
+  </div>
 </section>
