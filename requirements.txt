@@ -1,9 +1,9 @@
 BareNecessities==0.2.8
 CommandTool==0.5.3
-Django==1.11.14
-django-taggit==0.22.2
-easy-thumbnails==2.5
+Django==3.2.5
+django-taggit==1.5.1
 Gallery==0.1.0
 news==1.0
-Pillow==5.2.0
-pytz==2018.5
+pytz==2021.1
+djangorestframework==3.12.4
+django-cors-headers==3.7.0

@@ -36,8 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'easy_thumbnails',
-    'PIL',
     'taggit',
     'main',
     'biography',
@@ -46,7 +44,7 @@ INSTALLED_APPS = [
     'gallery',
     'contact',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
