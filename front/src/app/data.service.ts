@@ -11,11 +11,11 @@ export class DataService {
 
   constructor(private api: ApiService) { }
 
-  getWritings(): Observable<Writing[]> {
-    return this.api.getWritings();
+  getWritings(limit: string, offset: string): Observable<Response> {
+    return this.api.getWritings(limit, offset);
   }
 
-  getWriting(id: number): Observable<Writing> {
+  getWriting(id: string): Observable<Writing> {
     return this.api.getWritingById(id);
   }
 

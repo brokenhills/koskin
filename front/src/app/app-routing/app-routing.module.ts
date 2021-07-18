@@ -3,16 +3,26 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { WritingsComponent } from '../writings/writings.component';
 import { GalleryComponent } from '../gallery/gallery.component';
+import { WritingComponent } from '../writing/writing.component';
+import { MainComponent } from '../main/main.component';
 
 const routes: Routes = [
   {
       path:  '',
-      redirectTo:  '',
+      redirectTo:  'main',
       pathMatch:  'full',
+  },
+  {
+    path:  'main',
+    component:  MainComponent,
   },
   {
       path:  'writings',
       component:  WritingsComponent,
+  },
+  {
+      path: "writings/:id",
+      component: WritingComponent,
   },
   {
     path:  'gallery',
@@ -30,4 +40,4 @@ const routes: Routes = [
   ],
   declarations: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

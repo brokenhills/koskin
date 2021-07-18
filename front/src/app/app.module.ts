@@ -7,6 +7,7 @@ import { AppRoutingModule } from  './app-routing/app-routing.module';
 import { WritingComponent } from './writing/writing.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GalleryComponent } from './gallery/gallery.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { GalleryComponent } from './gallery/gallery.component';
     WritingsComponent,
     WritingComponent,
     GalleryComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,

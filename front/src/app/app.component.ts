@@ -7,12 +7,8 @@ import { DataService } from '../app/data.service';
   styleUrls: ['./app.component.scss'],
   providers: [DataService]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'front';
 
-  constructor() {}
-
-  ngOnInit() {
-  }
 }

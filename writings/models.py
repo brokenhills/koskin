@@ -1,25 +1,23 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
-
-# Create your models here.
 
 SHORT_TEXT_LEN = 200
 
+
 class Writings(models.Model):
-    idwr = models.IntegerField(primary_key=True, unique=True, null=False, verbose_name=u"Идентификатор")
-    name = models.CharField(max_length=40, unique=True, null=False, verbose_name=u"Название")
-    genre = models.CharField(max_length=20, verbose_name=u"Жанр")
-    datewr = models.DateField(null=False, verbose_name=u"Дата написания")
-    datead = models.DateField(auto_now_add=True, verbose_name=u"Дата загрузки")
-    content = models.TextField(verbose_name=u"Текст")
-    description = models.TextField(verbose_name=u"Комментарий")
-    is_liked = models.BooleanField(default=0, verbose_name=u"Избранное")
+    idwr = models.IntegerField(primary_key=True, unique=True, null=False, verbose_name="Идентификатор")
+    name = models.CharField(max_length=40, unique=True, null=False, verbose_name="Название")
+    genre = models.CharField(max_length=20, verbose_name="Жанр")
+    datewr = models.DateField(null=False, verbose_name="Дата написания")
+    datead = models.DateField(auto_now_add=True, verbose_name="Дата загрузки")
+    content = models.TextField(verbose_name="Текст")
+    description = models.TextField(verbose_name="Комментарий")
+    is_liked = models.BooleanField(default=0, verbose_name="Избранное")
 
     class Meta:
-        verbose_name=u"Произведение"
-        verbose_name_plural=u"Произведения"
+        verbose_name = "Произведение"
+        verbose_name_plural = "Произведения"
 
     def __str__(self):
         return self.name
@@ -34,8 +32,5 @@ class Writings(models.Model):
             return self.content
 
     def get_liked(self):
-        if self.is_liked == True:
+        if self.is_liked:
             return self.name
-
-
-

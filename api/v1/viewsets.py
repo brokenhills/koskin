@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from biography.models import Biography
 from contact.models import Contact
 from gallery.models import Gallery
@@ -35,5 +35,10 @@ class NewsViewSet(viewsets.ModelViewSet):
 
 
 class WritingsViewSet(viewsets.ModelViewSet):
+    queryset = Writings.objects.all().order_by('datewr')
+    serializer_class = WritingSerializer
+
+
+class WritingViewSet(generics.RetrieveAPIView):
     queryset = Writings.objects.all()
     serializer_class = WritingSerializer

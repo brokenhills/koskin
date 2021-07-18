@@ -1,9 +1,22 @@
-<section class="main" *ngIf="writings.length > 0">
+<div class="main" *ngIf="writings.length > 0">
   <div class="list-group">
     <div class="novel" *ngFor="let writing of writings">
-      <app-writing
-        [writing]="writing">
-      </app-writing>
+      <div class="title">
+        {{writing.name}}</div>
+      <div class="container">
+        {{getShortContent(writing.content)}}
+        <div *ngIf="contentLength > 200" class="more" [routerLink]="[writing.idwr]">
+          Читать далее
+        </div>
+        <div *ngIf="contentLength < 200" class="more" [routerLink]="[writing.idwr]">
+          Подробнее
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</div>
+<div *ngIf="count > 0">
+  <div>
+    <div>Далее</div>
+  </div>
+</div>

@@ -1,4 +1,23 @@
 <div class="view">
-  <label class="title">{{writing.name}}</label>
-  <div class="container">{{writing.content}}</div>
+  <div class="title">
+    {{writing?.name}}
+  </div>
+  <div class="container">
+    {{writing?.content}}
+    <div class="info">
+      <div>
+        {{writing?.datewr}}
+      </div>
+      <div>
+        {{writing?.genre}}
+      </div>
+      <div>
+        {{writing?.description}}
+      </div>
+    </div>
+    <div class="back" 
+      (click)="onBack()">
+      Назад
+    </div>
+  </div>
 </div>

@@ -29,24 +29,23 @@ export class ApiService {
     return throwError(error);
   }
 
-  public getWritings(): Observable<Writing[]> {
+  public getWritings(limit: string, offset: string): Observable<Response> {
     let headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'Negotiate'
     });
     return this.httpClient
-    .get(`${this.API_URL}/writings/`, { headers }).pipe(
-      map((response: Array<Object>) => {
-        return response.map((writing: Object) => new Writing(writing));
+    .get(`${this.API_URL}/writings/?limit=${limit}&offset=${offset}`, { headers }).pipe(
+      map((response: Response) => {
+        return response;
       }),
       catchError(this.handleError)
     );
   }
 
-  public getWritingById(id: number): Observable<Writing> {
+  public getWritingById(id: string): Observable<Writing> {
     return this.httpClient
-    .get(`${this.API_URL}/writings/${id}`).pipe(
+    .get(`${this.API_URL}/writings/${id}/`).pipe(
     map((response: Object) => {
-      console.log(response);
       return new Writing(response);
     }), 
     catchError(this.handleError));
@@ -56,7 +55,7 @@ export class ApiService {
     return this.httpClient
     .get(`${this.API_URL}/main/`).pipe(
     map((response: Array<Object>) => {
-      return response.map((mainInfo: Object) => new MainInfo(mainInfo));
+      return response['results'].map((mainInfo: Object) => new MainInfo(mainInfo));
     }),
     catchError(this.handleError));
   }
@@ -68,7 +67,7 @@ export class ApiService {
     return this.httpClient
     .get(`${this.API_URL}/gallery/`, { headers }).pipe(
     map((response: Array<Object>) => {
-      return response.map((item: Object) => new GalleryItem(item));
+      return response['results'].map((item: Object) => new GalleryItem(item));
     }),
     catchError(this.handleError));
   }
@@ -78,7 +77,7 @@ export class ApiService {
     .get(`${this.API_URL}/biography/`).pipe(
     map((response: {json: any}) => {
       const biographies = response.json;
-      return biographies.map((bio: Object) => new Biography(bio));
+      return biographies['results'].map((bio: Object) => new Biography(bio));
     }),
     catchError(this.handleError));
   }
@@ -88,7 +87,7 @@ export class ApiService {
     .get(`${this.API_URL}/news/`).pipe(
     map((response: {json: any}) => {
       const news = response.json;
-      return news.map((item: Object) => new NewsItem(item));
+      return news['results'].map((item: Object) => new NewsItem(item));
     }),
     catchError(this.handleError));
   }
