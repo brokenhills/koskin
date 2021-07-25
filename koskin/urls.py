@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from api.v1.routes import api_router
+from api.v1.routes import url_patterns
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -23,12 +23,6 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^',include('main.urls')),
-    url(r'^news/',include('news.urls')),
-    url(r'^writings/',include('writings.urls')),
-    url(r'^biography/',include('biography.urls')),
-    url(r'^gallery/',include('gallery.urls')),
-    url(r'^contacts/',include('contact.urls')),
-    url(r'^api/v1/', include(api_router.urls))
+    url(r'^api/v1/', include(url_patterns))
 
-] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(prefix='media', document_root=settings.MEDIA_ROOT)

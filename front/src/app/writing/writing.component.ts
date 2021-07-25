@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Writing } from 'src/app/models/writing';
 import { DataService } from '../data.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './writing.component.html',
   styleUrls: ['./writing.component.scss']
 })
-export class WritingComponent implements OnInit {
+export class WritingComponent implements OnInit, OnDestroy {
 
   writing: Writing;
   id: string;
@@ -18,12 +18,13 @@ export class WritingComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute, 
-    private router: Router, 
+    private router: Router,
     private dataService: DataService) {}
 
   ngOnInit() {
     this.subscription = this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
+      console.log(this.id);
       this.dataService.getWriting(this.id).subscribe(item => this.writing = item);
     });
   }  
@@ -33,7 +34,7 @@ export class WritingComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['writings']);
+    this.activatedRoute.parent
+    this.router.navigate(['.'], { relativeTo: this.activatedRoute.parent });
   }
-
 }

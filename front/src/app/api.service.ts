@@ -22,6 +22,8 @@ export class ApiService {
     'Authorization': 'Negotiate'
   });
 
+  params: HttpParams = new HttpParams();
+
   constructor(private  httpClient: HttpClient) {}
 
   private handleError(error: Response | any) {
@@ -29,12 +31,12 @@ export class ApiService {
     return throwError(error);
   }
 
-  public getWritings(limit: string, offset: string): Observable<Response> {
+  public getWritings(params: HttpParams): Observable<Response> {
     let headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'Negotiate'
     });
     return this.httpClient
-    .get(`${this.API_URL}/writings/?limit=${limit}&offset=${offset}`, { headers }).pipe(
+    .get(`${this.API_URL}/writings/`, { headers, params }).pipe(
       map((response: Response) => {
         return response;
       }),
@@ -51,21 +53,21 @@ export class ApiService {
     catchError(this.handleError));
   }
 
-  public getMain(): Observable<MainInfo[]> {
+  public getMain(limit: string, offset: string): Observable<MainInfo[]> {
     return this.httpClient
-    .get(`${this.API_URL}/main/`).pipe(
+    .get(`${this.API_URL}/main/?limit=${limit}&offset=${offset}`).pipe(
     map((response: Array<Object>) => {
       return response['results'].map((mainInfo: Object) => new MainInfo(mainInfo));
     }),
     catchError(this.handleError));
   }
 
-  public getGallery(){
+  public getGallery(limit: string, offset: string){
     let headers: HttpHeaders = new HttpHeaders({
       'Authorization': 'Negotiate'
     });
     return this.httpClient
-    .get(`${this.API_URL}/gallery/`, { headers }).pipe(
+    .get(`${this.API_URL}/gallery/?limit=${limit}&offset${offset}`, { headers }).pipe(
     map((response: Array<Object>) => {
       return response['results'].map((item: Object) => new GalleryItem(item));
     }),

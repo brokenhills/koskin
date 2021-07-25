@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'gallery',
     'contact',
     'rest_framework',
+    'django_filters',
     'corsheaders',
 ]
 
@@ -83,7 +84,8 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination'
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 TEMPLATES = [
@@ -159,6 +161,6 @@ STATIC_ROOT = '/koskin/main/static/'
 
 STATIC_URL = '/main/static/'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media\photo')

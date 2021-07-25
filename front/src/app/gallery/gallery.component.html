@@ -1,8 +1,8 @@
-<section class="main" *ngIf="gallery.length > 0">
-  <ul class="list-group">
-    <li *ngFor="let item of gallery">
-      <img src={{item.img}}>
-      <label>{{item.comment}}</label>
-    </li>
-  </ul>
-</section>
+<div class="main" *ngIf="gallery.length > 0">
+  <div class="main-gallery">
+    <div class="gallery-item" *ngFor="let item of gallery">
+      <img class="item-image" src={{item.img}}>
+      <div class="item-comment">{{item.comment}}</div>
+    </div>
+  </div>
+</div>

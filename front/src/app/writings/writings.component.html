@@ -1,22 +1,39 @@
-<div class="main" *ngIf="writings.length > 0">
+<div class="main" *ngIf="writings.length > 0 && isShowList">
   <div class="list-group">
     <div class="novel" *ngFor="let writing of writings">
       <div class="title">
         {{writing.name}}</div>
       <div class="container">
         {{getShortContent(writing.content)}}
-        <div *ngIf="contentLength > 200" class="more" [routerLink]="[writing.idwr]">
+        <div *ngIf="contentLength > 200" class="more" [routerLink]="['writing', writing.idwr]">
           Читать далее
         </div>
-        <div *ngIf="contentLength < 200" class="more" [routerLink]="[writing.idwr]">
+        <div *ngIf="contentLength < 200" class="more" [routerLink]="['writing', writing.idwr]">
           Подробнее
         </div>
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="count > 0">
-  <div>
-    <div>Далее</div>
+  <div *ngIf="count > 0">
+    <div class="page-navigation">
+      <button class="btn-back"
+        [routerLink]="[]"
+        [queryParams]="{ limit:limit, offset:offset }" 
+        [disabled]="!previous" 
+        (click)="getPreviousPage()">
+        Назад
+      </button>
+      <button class="btn-next"
+        [routerLink]="[]"
+        [queryParams]="{ limit:limit, offset:offset }" 
+        [disabled]="!next" 
+        (click)=getNextPage()>
+        Далее
+      </button>
+    </div>
   </div>
 </div>
+<router-outlet 
+  (activate)='onActivateItem()' 
+  (deactivate)='onDeactivateItem()'>
+</router-outlet>

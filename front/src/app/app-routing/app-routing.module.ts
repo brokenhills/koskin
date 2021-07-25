@@ -8,22 +8,32 @@ import { MainComponent } from '../main/main.component';
 
 const routes: Routes = [
   {
-      path:  '',
-      redirectTo:  'main',
-      pathMatch:  'full',
+    path:  '',
+    redirectTo:  'main',
+    pathMatch:  'full',
   },
   {
     path:  'main',
     component:  MainComponent,
+    children: [
+      {
+        path:  'liked/:id',
+        component:  WritingComponent,
+      },
+    ]
   },
+
   {
-      path:  'writings',
-      component:  WritingsComponent,
+    path:  'writings',
+    component:  WritingsComponent,
+    children: [
+      {
+        path: "writing/:id",
+        component: WritingComponent,
+      },
+    ]
   },
-  {
-      path: "writings/:id",
-      component: WritingComponent,
-  },
+
   {
     path:  'gallery',
     component:  GalleryComponent,

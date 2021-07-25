@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 import { GalleryItem } from '../models/galleryItem';
 
@@ -7,17 +9,31 @@ import { GalleryItem } from '../models/galleryItem';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent implements OnInit, OnDestroy {
+
+  DEFAULT_LIMIT: number = 10;
 
   gallery: GalleryItem[] = [];
+  limit: number = this.DEFAULT_LIMIT;
+  offset: number = 0;
 
-  constructor(private dataService: DataService) { }
+  subscription: Subscription;
+
+  constructor(
+    private activaeRouter: ActivatedRoute, 
+    private router: Router, 
+    private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.getGallery()
-    .subscribe(gallery => {
-      this.gallery = gallery;
+    this.subscription = this.activaeRouter.paramMap.subscribe(() => {
+      this.dataService.getGallery(this.limit.toString(), this.offset.toString())
+        .subscribe(gallery => { 
+          this.gallery = gallery;
+      });
     });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }
