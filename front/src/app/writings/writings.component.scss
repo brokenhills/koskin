@@ -24,4 +24,16 @@
         font-family: monospace;
         font-size: 1.3em;
     }
+    .page-navigation {
+        :hover {
+            cursor: pointer;
+        }
+        .btn-back, .btn-next {
+            font-family: monospace;
+            font-size: 1.3em;
+            text-decoration: underline;
+            border: none;
+            background: none;
+        }
+    }
 }

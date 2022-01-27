@@ -1,0 +1,50 @@
+.main {
+    .main-group {
+        .group-item {
+            margin-bottom: 2em;
+            font-family: monospace;
+            font-size: 1.3em;
+            .item-title {
+                font-weight: bold;
+                font-size: 1.5em;
+                font-family: monospace;
+            }
+            .item-content {
+                margin-top: 0.5em;
+                line-height: 1.5em;
+            }
+            .item-date {
+                font-family: monospace;
+            }
+        }
+    }
+    .main-liked {
+        .liked-title {
+            font-weight: bold;
+            font-size: 2em;
+            font-family: monospace;
+            margin-bottom: 1em;
+        }
+        .liked-group {
+            .group-item {
+                margin-bottom: 2em;
+                font-family: monospace;
+                font-size: 1.3em;
+                .item-title {
+                    font-weight: bold;
+                    font-size: 1.5em;
+                    font-family: monospace;
+                }
+                .item-content {
+                    margin-top: 0.5em;
+                    line-height: 1.5em;
+                    .more {
+                        font-size: 0.8em;
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

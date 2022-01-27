@@ -7,7 +7,8 @@ import { GalleryItem } from '../models/galleryItem';
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss']
+  styleUrls: ['./gallery.component.scss'],
+  providers: [DataService]
 })
 export class GalleryComponent implements OnInit, OnDestroy {
 

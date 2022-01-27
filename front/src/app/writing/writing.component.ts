@@ -7,12 +7,15 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-writing',
   templateUrl: './writing.component.html',
-  styleUrls: ['./writing.component.scss']
+  styleUrls: ['./writing.component.scss'],
+  providers: [DataService]
 })
 export class WritingComponent implements OnInit, OnDestroy {
 
   writing: Writing;
   id: string;
+  prevLimit: number;
+  prevOffset: number;
 
   subscription: Subscription;
 
@@ -24,7 +27,6 @@ export class WritingComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.activatedRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
-      console.log(this.id);
       this.dataService.getWriting(this.id).subscribe(item => this.writing = item);
     });
   }  
@@ -34,7 +36,6 @@ export class WritingComponent implements OnInit, OnDestroy {
   }
 
   onBack() {
-    this.activatedRoute.parent
-    this.router.navigate(['.'], { relativeTo: this.activatedRoute.parent });
+    this.router.navigate(['.'], { relativeTo: this.activatedRoute.parent, queryParams: { limit: this.prevLimit, offset: this.prevOffset } });
   }
 }

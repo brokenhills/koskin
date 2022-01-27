@@ -1,0 +1,31 @@
+<div class="main" *ngIf="isShowList">
+    <div class="main-group" *ngIf="mainItems.length > 0">
+        <div class="group-item" *ngFor="let item of mainItems">
+            <div class="item-title">{{item.name}}</div>
+            <div class="item-content">{{item.content}}</div>
+            <div class="item-date">{{item.datead}}</div>
+        </div>
+    </div>
+    <div class="main-liked" *ngIf="writings.length > 0">
+        <div class="liked-title">Избранное</div>
+        <div class="liked-group">
+            <div class="group-item" *ngFor="let writing of writings">
+              <div class="item-title">
+                {{writing.name}}</div>
+              <div class="item-content">
+                {{getShortContent(writing.content)}}
+                <div *ngIf="contentLength > 200" class="more" [routerLink]="['liked', writing.idwr]">
+                  Читать далее
+                </div>
+                <div *ngIf="contentLength < 200" class="more" [routerLink]="['liked', writing.idwr]">
+                  Подробнее
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet 
+  (activate)='onActivateItem()' 
+  (deactivate)='onDeactivateItem()'>
+</router-outlet>
