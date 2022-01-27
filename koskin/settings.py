@@ -114,9 +114,10 @@ WSGI_APPLICATION = 'koskin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': 'koskin.cnf',
-        },
+        'NAME': 'brokenhills$koskin',
+        'USER': 'brokenhills',
+        'PASSWORD': 'donyagon1',
+        'HOST': 'brokenhills.mysql.pythonanywhere-services.com',
     }
 }
 
