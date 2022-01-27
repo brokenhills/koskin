@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from  '@angular/common/http';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.prod';
 import { Observable } from 'rxjs';
 import { Writing } from '../app/models/writing';
 import { MainInfo } from '../app/models/mainInfo';
@@ -49,7 +49,7 @@ export class ApiService {
     .get(`${this.API_URL}/writings/${id}/`).pipe(
     map((response: Object) => {
       return new Writing(response);
-    }), 
+    }),
     catchError(this.handleError));
   }
 
