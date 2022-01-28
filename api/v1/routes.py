@@ -1,5 +1,3 @@
-from koskin import settings
-from django.conf.urls.static import static
 from django.urls import include, path
 from rest_framework import routers
 from api.v1.viewsets import WritingsViewSet, BiographyViewSet, ContactViewSet, GalleryViewSet, MainViewSet, \

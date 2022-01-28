@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8$j(_khko8ko^s9(-6jc7lf(2yu(!h%9j$iji^+*ic$wg)6+-%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [u'brokenhills.pythonanywhere.com']
+ALLOWED_HOSTS = [u'127.0.0.1']
 
 
 # Application definition
@@ -63,21 +63,22 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'koskin.urls'
 
 CORS_ALLOW_HEADERS = (
-    'content-disposition',
+    'content-disposition', 
     'accept-encoding',
-    'content-type',
-    'accept',
-    'origin',
-    'authorization',
-    'cache-control',
-    'access-control-allow-origin',
+    'content-type', 
+    'accept', 
+    'origin', 
+    'authorization', 
+    'cache-control', 
+    'access-control-allow-origin', 
     'access-control-allow-headers',
     'access-control-allow-methods'
-)
+    )
 
 CORS_ORIGIN_WHITELIST = (
     'https://google.com',
-    'https://brokenhills.pythonanywhere.com',
+    'http://127.0.0.1:4200',
+    'http://localhost',
 )
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -113,10 +114,10 @@ WSGI_APPLICATION = 'koskin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'brokenhills$koskin',
-        'USER': 'brokenhills',
+        'NAME': 'koskin',
+        'USER': 'koskin',
         'PASSWORD': 'donyagon1',
-        'HOST': 'brokenhills.mysql.pythonanywhere-services.com',
+        'HOST': 'localhost',
     }
 }
 
