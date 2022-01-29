@@ -1,15 +1,19 @@
-<div class="menu-container">
-  <div class="menu-link">
-    <h2><span [routerLink]="['main']">Главная</span></h2>
+<div class="root">
+  <div class="menu-container">
+    <div class="menu-link">
+      <h2 class="home" [routerLink]="['main']"><span>Главная</span></h2>
+    </div>
+    <div>|</div>
+    <div class="menu-link">
+      <h2 class="writings" [routerLink]="['writings']"><span>Произведения</span></h2>
+    </div>
+    <div>|</div>
+    <div class="menu-link">
+      <h2 class="gallery" [routerLink]="['gallery']"><span>Фотоархив</span></h2>
+    </div>
   </div>
-  <div class="menu-link">
-    <h2><span [routerLink]="['writings']">Произведения</span></h2>
+  <div class="main-container">
+    <router-outlet></router-outlet>
   </div>
-  <div class="menu-link">
-    <h2><span [routerLink]="['gallery']">Фотоархив</span></h2>
-  </div>
-</div>
-<div class="main-container">
-  <router-outlet></router-outlet>
 </div>
 

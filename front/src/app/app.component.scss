@@ -1,20 +1,68 @@
+.root {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .menu-container {
     display: flex;
     flex-direction: row;
-    width: 50%;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
     margin: 0 auto;
     font-family: monospace;
     font-size: 1.5em;
+    text-align: center;
     :hover {
         text-decoration: underline;
     }
 
     .menu-link {
+        width: 33%;
         cursor: pointer;
     }
 }
 
 .main-container {
     margin: 1em 5em 6em;
+}
+
+@media only screen and (max-width:640px) {
+    .menu-container {
+        width: 100%;
+        margin: 24px 0;
+        font-size: 14px;
+        .menu-link {
+            span {
+                display: none;
+            }
+            .home, .writings, .gallery {
+                display: inline-block;
+                width: 2em;
+                height: 2em;
+                background-size: 2em 2em;
+            }
+            .home {
+                background-image: url('/assets/svg/001-home.svg');
+            }
+            .writings {
+                background-image: url('/assets/svg/032-book.svg');
+            }
+            .gallery {
+                background-image: url('/assets/svg/015-images.svg');
+            }
+        }
+    }
+
+    .main-container {
+        margin: 24px 12px;
+    }
+}
+
+@media only screen and (max-width:400px) {
+    .menu-container {
+        font-size: 12px;
+    }
 }
