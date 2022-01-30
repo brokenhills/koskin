@@ -5,12 +5,14 @@
 }
 
 .menu-container {
+    position: sticky;
+    top: 0;
+    background-color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 800px;
     margin: 0 auto;
     font-family: monospace;
     font-size: 1.5em;
@@ -20,13 +22,14 @@
     }
 
     .menu-link {
-        width: 33%;
+        padding: 0 1em;
         cursor: pointer;
     }
 }
 
 .main-container {
-    margin: 1em 5em 6em;
+    max-width: 1200px;
+    margin: 1em auto 6em;
 }
 
 @media only screen and (max-width:640px) {

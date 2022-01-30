@@ -164,6 +164,6 @@ STATIC_ROOT = '/koskin/main/static/'
 
 STATIC_URL = '/main/static/'
 
-MEDIA_URL = '/'
+MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media\photo')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

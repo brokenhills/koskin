@@ -1,13 +1,49 @@
 .main {
+    display: flex;
+    justify-content: center;
     .main-gallery {
-        display: flex;
-        flex-direction: column;
+        display: inline-flex;
         align-items: center;
+        flex-wrap: wrap;
         .gallery-item {
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            height: auto;
+            margin: 0 16px;
+            .item-link {
+                display: flex;
+                justify-content: center;
+                max-height: 270px;
+                max-width: 364px;
+                border: 0.1em solid #ddd;
+                border-radius: 0.5em;
+                padding: 0.5em;
+            }
+            .item-image {
+                width: auto;
+                height: auto;
+                max-width: 342px;
+                max-height: 270px;
+                :hover {
+                    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+                }
+            }
             .item-comment {
                 font-family: monospace;
                 font-size: 1.2em;
                 margin-bottom: 2em;
+                padding: 12px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:640px) {
+    .main {
+        .main-gallery {
+            .gallery-item {
+                width: 100%;
             }
         }
     }

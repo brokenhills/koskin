@@ -6,7 +6,7 @@ from django.db import models
 class Gallery(models.Model):
     idim = models.IntegerField(primary_key=True, unique=True, null=False, verbose_name="Идентификатор")
     name = models.CharField(max_length=40, unique=True, null=False, verbose_name="Название")
-    img = models.FileField(upload_to='media/', null=False, verbose_name="Фотография")
+    img = models.FileField(upload_to='photo/', null=False, verbose_name="Фотография")
     comment = models.TextField(null=False, verbose_name="Содержание")
     datead = models.DateField(auto_now_add=True, verbose_name="Дата загрузки")
 
