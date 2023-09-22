@@ -1,0 +1,18 @@
+.filter {
+  position: sticky;
+  top: 5em;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 50px;
+  padding-bottom: 8px;
+  background-color: white;
+
+  .filter-field > input {
+    height: 30px;
+    width: 138px;
+    border: 0;
+    border-bottom: 1px solid;
+    outline: none;
+  }
+}

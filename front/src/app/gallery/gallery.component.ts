@@ -21,14 +21,14 @@ export class GalleryComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
-    private activaeRouter: ActivatedRoute, 
-    private router: Router, 
+    private activatedRouter: ActivatedRoute,
+    private router: Router,
     private dataService: DataService) {}
 
   ngOnInit() {
-    this.subscription = this.activaeRouter.paramMap.subscribe(() => {
+    this.subscription = this.activatedRouter.paramMap.subscribe(() => {
       this.dataService.getGallery(this.limit.toString(), this.offset.toString())
-        .subscribe(gallery => { 
+        .subscribe(gallery => {
           this.gallery = gallery;
       });
     });

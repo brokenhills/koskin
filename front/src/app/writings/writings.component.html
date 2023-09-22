@@ -1,3 +1,5 @@
+<app-search (writings)="onSearch($event)"></app-search>
+<app-filter (writings)="onSearch($event)"></app-filter>
 <div class="main" *ngIf="writings.length > 0 && isShowList">
   <div class="list-group">
     <div class="novel" *ngFor="let writing of writings">
@@ -18,22 +20,22 @@
     <div class="page-navigation">
       <button class="btn-back"
         [routerLink]="[]"
-        [queryParams]="{ limit:limit, offset:offset }" 
-        [disabled]="!previous" 
+        [queryParams]="{ limit:limit, offset:offset }"
+        [disabled]="!previous"
         (click)="getPreviousPage()">
         Назад
       </button>
       <button class="btn-next"
         [routerLink]="[]"
-        [queryParams]="{ limit:limit, offset:offset }" 
-        [disabled]="!next" 
+        [queryParams]="{ limit:limit, offset:offset }"
+        [disabled]="!next"
         (click)=getNextPage()>
         Далее
       </button>
     </div>
   </div>
 </div>
-<router-outlet 
-  (activate)='onActivateItem()' 
+<router-outlet
+  (activate)='onActivateItem()'
   (deactivate)='onDeactivateItem()'>
 </router-outlet>

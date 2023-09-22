@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from rest_framework.schemas import get_schema_view
+
 from api.v1.routes import url_patterns
 from django.conf.urls.static import static
 from django.conf import settings
@@ -23,6 +25,11 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/v1/', include(url_patterns))
+    url(r'^api/v1/', include(url_patterns)),
+    url('^openapi/', get_schema_view(
+        title='Koskin API',
+        description='API for Koskin Website',
+        version='1.0.0',
+    ), name='openapi-schema'),
 
 ] + static(prefix='media', document_root=settings.MEDIA_ROOT)

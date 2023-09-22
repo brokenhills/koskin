@@ -6,6 +6,7 @@ import { DataService } from '../data.service';
 import { HelperService } from '../helper.service';
 import { MainInfo } from '../models/mainInfo';
 import { Writing } from '../models/writing';
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '../constants'
 
 @Component({
   selector: 'app-main',
@@ -15,20 +16,18 @@ import { Writing } from '../models/writing';
 })
 export class MainComponent implements OnInit, OnDestroy {
 
-  DEFAULT_LIMIT: number = 10;
-
   mainItems: MainInfo[] = [];
   writings: Writing[] = [];
-  limit: number = this.DEFAULT_LIMIT;
-  offset: number = 0;
+  limit: number = DEFAULT_LIMIT;
+  offset: number = DEFAULT_OFFSET;
   contentLength: number;
   isShowList: boolean = true;
 
   subscription: Subscription;
 
   constructor(
-    private activatedRoute: ActivatedRoute, 
-    private dataService: DataService, 
+    private activatedRoute: ActivatedRoute,
+    private dataService: DataService,
     private helper: HelperService) {}
 
   ngOnInit(): void {
@@ -37,8 +36,14 @@ export class MainComponent implements OnInit, OnDestroy {
         .getMainItems(this.limit.toString(), this.offset.toString())
           .subscribe(items => this.mainItems = items);
       this.dataService
-        .getWritings(new HttpParams().set('limit', this.limit.toString()).set('offset', this.offset.toString()).set('is_liked', true))
-          .subscribe(items => this.writings = items['results']);
+        .getWritings(
+          new HttpParams()
+            .set('limit', this.limit.toString())
+            .set('offset', this.offset.toString())
+            .set('is_liked', true)
+        ).subscribe(items => {
+          this.writings = items['results']
+        });
     });
   }
 
@@ -59,5 +64,4 @@ export class MainComponent implements OnInit, OnDestroy {
   onDeactivateItem() {
     this.isShowList = true;
   }
-  
 }

@@ -1,7 +1,13 @@
 from django.urls import include, path
 from rest_framework import routers
-from api.v1.viewsets import WritingsViewSet, BiographyViewSet, ContactViewSet, GalleryViewSet, MainViewSet, \
-    NewsViewSet
+from api.v1.viewsets import (
+    WritingsViewSet,
+    BiographyViewSet,
+    ContactViewSet,
+    GalleryViewSet,
+    MainViewSet,
+    NewsViewSet,
+)
 
 api_router = routers.SimpleRouter()
 api_router.register('biography', BiographyViewSet)

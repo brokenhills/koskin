@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { DataService } from '../data.service';
 import { HelperService } from '../helper.service';
 import { Writing } from '../models/writing';
+import { DEFAULT_LIMIT, DEFAULT_OFFSET } from '../constants';
 
 @Component({
   selector: 'app-writings',
@@ -13,8 +14,6 @@ import { Writing } from '../models/writing';
   providers: [DataService]
 })
 export class WritingsComponent implements OnInit, OnDestroy {
-
-  DEFAULT_LIMIT: number = 10;
 
   writings: Writing[] = [];
   currentWriting: Writing;
@@ -29,23 +28,35 @@ export class WritingsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
-    private activatedRoute: ActivatedRoute, 
+    private activatedRoute: ActivatedRoute,
     private router: Router,
-    private dataService: DataService, 
+    private dataService: DataService,
     private helper: HelperService) {}
 
   ngOnInit() {
     this.subscription = this.activatedRoute.queryParamMap.subscribe(queryParams => {
-      this.limit = Number.parseInt(queryParams.get('limit'))||this.DEFAULT_LIMIT;
-      this.offset = Number.parseInt(queryParams.get('offset'))||0;
-      this.dataService.getWritings(new HttpParams().set('limit', this.limit.toString()).set('offset', this.offset.toString()))
-      .subscribe(writings => {
-        this.writings = writings['results'];
-        this.next = writings['next'];
-        this.previous = writings['previous'];
-        this.count = writings['count'];
+      this.limit = Number.parseInt(queryParams.get('limit'))||DEFAULT_LIMIT;
+      this.offset = Number.parseInt(queryParams.get('offset'))||DEFAULT_OFFSET;
+      this.dataService.getWritings(
+        new HttpParams()
+          .set('limit', this.limit.toString())
+          .set('offset', this.offset.toString())
+      ).subscribe(writings => {
+        this.processWritings(writings)
       });
     });
+  }
+
+  processWritings(writings) {
+    this.writings = writings['results'];
+    this.next = writings['next'];
+    this.previous = writings['previous'];
+    this.count = writings['count'];
+  }
+
+  onSearch(writings) {
+    this.writings = writings;
+    this.processWritings(writings);
   }
 
   ngOnDestroy() {
@@ -60,15 +71,25 @@ export class WritingsComponent implements OnInit, OnDestroy {
 
   getNextPage(): void {
     this.router.navigate(
-      ['writings'], 
-      { queryParams: { offset: this.offset += this.DEFAULT_LIMIT||0, limit: this.DEFAULT_LIMIT }}
+      ['writings'],
+      {
+        queryParams: {
+          offset: this.offset += DEFAULT_LIMIT||0,
+          limit: DEFAULT_LIMIT,
+        }
+      }
     );
   }
 
   getPreviousPage(): void {
     this.router.navigate(
-      ['writings'], 
-      { queryParams: { offset: this.offset -= this.DEFAULT_LIMIT||0, limit: this.DEFAULT_LIMIT }}
+      ['writings'],
+      {
+        queryParams: {
+          offset: this.offset -= DEFAULT_LIMIT||0,
+          limit: DEFAULT_LIMIT,
+        }
+      }
     );
   }
 

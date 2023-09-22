@@ -5,6 +5,18 @@ from django.db import models
 SHORT_TEXT_LEN = 200
 
 
+@models.TextField.register_lookup
+@models.CharField.register_lookup
+class Search(models.Lookup):
+    lookup_name = 'search'
+
+    def as_mysql(self, compiler, connection):
+        lhs, lhs_params = self.process_lhs(compiler, connection)
+        rhs, rhs_params = self.process_rhs(compiler, connection)
+        params = lhs_params + rhs_params
+        return 'MATCH (%s) AGAINST (%s IN BOOLEAN MODE)' % (lhs, rhs), params
+
+
 class Writings(models.Model):
     idwr = models.IntegerField(primary_key=True, unique=True, null=False, verbose_name="Идентификатор")
     name = models.CharField(max_length=40, unique=True, null=False, verbose_name="Название")

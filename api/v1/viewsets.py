@@ -1,13 +1,24 @@
 from rest_framework import viewsets
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters.rest_framework import (
+    DjangoFilterBackend,
+)
+from rest_framework.response import Response
+
+from api.v1.filters import DateWrRangeFilter
 from biography.models import Biography
 from contact.models import Contact
 from gallery.models import Gallery
 from main.models import Main
 from writings.models import Writings
 from news.models import News
-from api.v1.serializers import WritingSerializer, BiographySerializer, ContactSerializer, GallerySerializer, \
-    MainSerializer, NewsSerializer
+from api.v1.serializers import (
+    WritingSerializer,
+    BiographySerializer,
+    ContactSerializer,
+    GallerySerializer,
+    MainSerializer,
+    NewsSerializer,
+)
 
 
 class BiographyViewSet(viewsets.ModelViewSet):
@@ -38,5 +49,19 @@ class NewsViewSet(viewsets.ModelViewSet):
 class WritingsViewSet(viewsets.ModelViewSet):
     queryset = Writings.objects.all().order_by('datewr')
     serializer_class = WritingSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['is_liked', ]
+    filter_backends = (DjangoFilterBackend, )
+    filterset_class = DateWrRangeFilter
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        search = request.query_params.get('search')
+        if search:
+            queryset = Writings.objects.filter(
+                content__search=search,
+            )
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)

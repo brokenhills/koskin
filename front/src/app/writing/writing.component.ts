@@ -20,22 +20,32 @@ export class WritingComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
-    private activatedRoute: ActivatedRoute, 
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private dataService: DataService) {}
 
   ngOnInit() {
-    this.subscription = this.activatedRoute.paramMap.subscribe(params => {
-      this.id = params.get('id');
-      this.dataService.getWriting(this.id).subscribe(item => this.writing = item);
-    });
-  }  
+    this.subscription = this.activatedRoute.paramMap
+      .subscribe(params => {
+        this.id = params.get('id');
+        this.dataService.getWriting(this.id)
+          .subscribe(item => {
+            this.writing = item;
+          });
+      });
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
   onBack() {
-    this.router.navigate(['.'], { relativeTo: this.activatedRoute.parent, queryParams: { limit: this.prevLimit, offset: this.prevOffset } });
+    this.router.navigate(
+      ['.'],
+      {
+        relativeTo: this.activatedRoute.parent,
+        queryParams: { limit: this.prevLimit, offset: this.prevOffset }
+      }
+    );
   }
 }

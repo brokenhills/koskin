@@ -9,6 +9,8 @@ import { WritingComponent } from './writing/writing.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GalleryComponent } from './gallery/gallery.component';
 import { MainComponent } from './main/main.component';
+import { SearchComponent } from './search/search.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,20 @@ import { MainComponent } from './main/main.component';
     WritingComponent,
     GalleryComponent,
     MainComponent,
+    SearchComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,16 +14,22 @@
     justify-content: center;
     width: 100%;
     margin: 0 auto;
+    padding-bottom: 24px;
     font-family: monospace;
     font-size: 1.5em;
     text-align: center;
-    :hover {
-        text-decoration: underline;
-    }
 
     .menu-link {
         padding: 0 1em;
         cursor: pointer;
+
+        .link {
+          margin-bottom: 12px;
+        }
+    }
+
+    .menu-link.active {
+      border-bottom: 1px solid black;
     }
 }
 

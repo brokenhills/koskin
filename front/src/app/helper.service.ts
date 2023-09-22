@@ -6,12 +6,12 @@ import { Injectable } from "@angular/core";
 export class HelperService {
 
     getShortContent(content: string): { content: string, length: number } {
-        const splitted = content.split(' ');
-        const contentLength = splitted.length;
+        const split = content.split(' ');
+        const contentLength = split.length;
         if (contentLength < 200) {
           return { content: content,  length: contentLength };
         }
-        content = splitted.slice(0, 201).join(' ') + '...';
+        content = split.slice(0, 201).join(' ') + '...';
         return { content: content, length: contentLength };
       }
 }
