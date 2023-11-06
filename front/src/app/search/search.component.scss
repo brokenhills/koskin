@@ -6,7 +6,7 @@
   align-items: center;
   height: 50px;
   padding-bottom: 8px;
-  background-color: white;
+  background-color: #f4f0ec;
 
   .search-field > input {
     height: 30px;
@@ -14,5 +14,6 @@
     border: 0;
     border-bottom: 1px solid;
     outline: none;
+    background-color: #f4f0ec;
   }
 }

@@ -1,7 +1,7 @@
 from django_filters import DateFromToRangeFilter
 from django_filters.rest_framework import FilterSet
 
-from writings.models import Writings
+from core.models import Writings
 
 
 class DateWrRangeFilter(FilterSet):

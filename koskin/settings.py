@@ -37,12 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'taggit',
-    'main',
-    'biography',
-    'writings',
-    'news',
-    'gallery',
-    'contact',
+    'core',
     'rest_framework',
     'django_filters',
     'corsheaders',
@@ -157,11 +152,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-ADMIN_MEDIA_PREFIX = '/main/static/admin/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
-STATIC_ROOT = '/koskin/main/static/'
+STATIC_ROOT = '/koskin/static/'
 
-STATIC_URL = '/main/static/'
+STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 

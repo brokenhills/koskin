@@ -1,10 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from biography.models import Biography
-from contact.models import Contact
-from gallery.models import Gallery
-from main.models import Main
-from writings.models import Writings
-from news.models import News
+from core.models import Writings, News, Main, Gallery, Contact, Biography
 
 
 class BiographySerializer(ModelSerializer):

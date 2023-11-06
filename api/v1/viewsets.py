@@ -5,12 +5,14 @@ from django_filters.rest_framework import (
 from rest_framework.response import Response
 
 from api.v1.filters import DateWrRangeFilter
-from biography.models import Biography
-from contact.models import Contact
-from gallery.models import Gallery
-from main.models import Main
-from writings.models import Writings
-from news.models import News
+from core.models import (
+    Writings,
+    News,
+    Main,
+    Gallery,
+    Contact,
+    Biography,
+)
 from api.v1.serializers import (
     WritingSerializer,
     BiographySerializer,
